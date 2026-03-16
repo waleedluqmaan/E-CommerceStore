@@ -20,7 +20,12 @@ const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-            const data = await res.json();
+            let data;
+            try {
+                data = await res.json();
+            } catch (e) {
+                data = { msg: 'Server error: Unable to parse response' };
+            }
             if (res.ok) {
                 login(data.user, data.token);
                 navigate('/products');
@@ -57,22 +62,22 @@ const SignUp = () => {
     return (
         <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/20 blur-[120px] pointer-events-none" />
+            <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/15 blur-[120px] pointer-events-none" />
 
-            <Link to="/" className="absolute top-8 left-8 text-gray-400 hover:text-white flex items-center gap-2 transition">
+            <Link to="/" className="absolute top-8 left-8 text-sky-200/50 hover:text-white flex items-center gap-2 transition">
                 <ArrowLeft className="w-5 h-5" /> Back to Home
             </Link>
 
             <div className="glass-panel w-full max-w-md p-8 relative z-10">
-                <h2 className="text-3xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Create Account</h2>
-                <p className="text-gray-400 text-center mb-8">Join LuxeStore today</p>
+                <h2 className="text-3xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">Create Account</h2>
+                <p className="text-sky-200/50 text-center mb-8">Join LuxeStore today</p>
 
-                {error && <div className="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-lg mb-6 text-sm">{error}</div>}
+                {error && <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-lg mb-6 text-sm">{error}</div>}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+                        <label className="block text-sm font-medium text-sky-200/70 mb-1">Full Name</label>
                         <input
                             type="text"
                             name="name"
@@ -84,7 +89,7 @@ const SignUp = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                        <label className="block text-sm font-medium text-sky-200/70 mb-1">Email Address</label>
                         <input
                             type="email"
                             name="email"
@@ -96,7 +101,7 @@ const SignUp = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-sky-200/70 mb-1">Password</label>
                         <input
                             type="password"
                             name="password"
@@ -111,14 +116,14 @@ const SignUp = () => {
                 </form>
 
                 <div className="mt-6 flex items-center">
-                    <div className="flex-1 border-t border-white/10"></div>
-                    <p className="mx-4 text-sm text-gray-500">OR</p>
-                    <div className="flex-1 border-t border-white/10"></div>
+                    <div className="flex-1 border-t border-sky-300/10"></div>
+                    <p className="mx-4 text-sm text-sky-200/30">OR</p>
+                    <div className="flex-1 border-t border-sky-300/10"></div>
                 </div>
 
                 <button
                     onClick={handleGoogleLogin}
-                    className="mt-6 w-full flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-gray-100 transition duration-300"
+                    className="mt-6 w-full flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl shadow-[0_0_15px_rgba(56,189,248,0.15)] hover:bg-gray-100 transition duration-300"
                 >
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -129,7 +134,7 @@ const SignUp = () => {
                     Continue with Google
                 </button>
 
-                <p className="mt-8 text-center text-sm text-gray-400">
+                <p className="mt-8 text-center text-sm text-sky-200/40">
                     Already have an account? <Link to="/signin" className="text-primary hover:text-primary/80 font-medium">Sign in</Link>
                 </p>
             </div>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Trash2 } from 'lucide-react';
+import { ArrowRight, Trash2, ShoppingCart } from 'lucide-react';
 
 const Cart = () => {
     const { cart, cartTotal, clearCart } = useContext(CartContext);
@@ -23,11 +23,11 @@ const Cart = () => {
 
                 {!cart?.items || cart.items.length === 0 ? (
                     <div className="glass-panel p-12 text-center flex flex-col items-center">
-                        <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6">
-                            <ShoppingCart className="w-10 h-10 text-gray-500" />
+                        <div className="w-20 h-20 bg-sky-400/10 rounded-full flex items-center justify-center mb-6 border border-sky-300/15">
+                            <ShoppingCart className="w-10 h-10 text-sky-200/40" />
                         </div>
                         <h2 className="text-xl font-medium text-white mb-2">Your cart is empty</h2>
-                        <p className="text-gray-400 mb-8">Looks like you haven't added anything yet.</p>
+                        <p className="text-sky-200/50 mb-8">Looks like you haven't added anything yet.</p>
                         <Link to="/products" className="btn-primary inline-flex max-w-[200px]">
                             Start Shopping
                         </Link>
@@ -37,7 +37,7 @@ const Cart = () => {
                         <div className="md:col-span-2 space-y-4">
                             {cart.items.map((item) => (
                                 <div key={item._id} className="glass-panel p-4 flex gap-4 items-center">
-                                    <div className="w-24 h-24 rounded-lg overflow-hidden bg-white/5 flex-shrink-0">
+                                    <div className="w-24 h-24 rounded-lg overflow-hidden bg-sky-900/10 flex-shrink-0">
                                         <img
                                             src={item.product?.image || 'https://via.placeholder.com/150'}
                                             alt={item.product?.title}
@@ -46,7 +46,7 @@ const Cart = () => {
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-lg font-bold text-white mb-1">{item.product?.title}</h3>
-                                        <p className="text-sm text-gray-400 mb-2">Qty: <span className="text-white font-medium">{item.quantity}</span></p>
+                                        <p className="text-sm text-sky-200/50 mb-2">Qty: <span className="text-white font-medium">{item.quantity}</span></p>
                                         <p className="text-primary font-bold">${item.product?.price.toFixed(2)}</p>
                                     </div>
                                     <div className="text-right">
@@ -58,18 +58,18 @@ const Cart = () => {
 
                         <div className="md:col-span-1">
                             <div className="glass-panel p-6 sticky top-24">
-                                <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">Order Summary</h3>
-                                <div className="flex justify-between mb-4 text-gray-300">
+                                <h3 className="text-xl font-bold text-white mb-6 border-b border-sky-300/10 pb-4">Order Summary</h3>
+                                <div className="flex justify-between mb-4 text-sky-200/60">
                                     <span>Subtotal</span>
                                     <span>${cartTotal.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between mb-4 text-gray-300">
+                                <div className="flex justify-between mb-4 text-sky-200/60">
                                     <span>Shipping</span>
-                                    <span className="text-green-400">Free</span>
+                                    <span className="text-emerald-400">Free</span>
                                 </div>
-                                <div className="border-t border-white/10 my-4 pt-4 flex justify-between items-center">
+                                <div className="border-t border-sky-300/10 my-4 pt-4 flex justify-between items-center">
                                     <span className="text-lg font-bold text-white">Total</span>
-                                    <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                                    <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
                                         ${cartTotal.toFixed(2)}
                                     </span>
                                 </div>

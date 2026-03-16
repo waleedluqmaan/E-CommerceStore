@@ -9,17 +9,17 @@ const Navbar = () => {
     const { cartCount } = useContext(CartContext);
 
     return (
-        <nav className="w-full bg-darker/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <nav className="w-full bg-darker/80 backdrop-blur-md border-b border-sky-300/10 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <Link to="/products" className="flex-shrink-0 flex items-center gap-2">
                         <ShoppingBag className="h-6 w-6 text-primary" />
-                        <span className="text-xl font-bold text-white">LuxeStore</span>
+                        <span className="text-xl font-bold text-white">Ecommerce Website</span>
                     </Link>
                     <div className="flex items-center space-x-6">
-                        <span className="text-sm text-gray-400 hidden sm:block">Welcome, <span className="text-white font-medium">{user?.name}</span></span>
+                        <span className="text-sm text-sky-200/50 hidden sm:block">Welcome, <span className="text-white font-medium">{user?.name}</span></span>
 
-                        <Link to="/cart" className="relative text-gray-300 hover:text-white transition">
+                        <Link to="/cart" className="relative text-sky-200/60 hover:text-white transition">
                             <ShoppingCart className="w-6 h-6" />
                             {cartCount > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
@@ -28,7 +28,7 @@ const Navbar = () => {
                             )}
                         </Link>
 
-                        <button onClick={logout} className="text-gray-300 hover:text-red-400 transition flex items-center gap-2 text-sm font-medium bg-red-500/10 px-3 py-1.5 rounded-lg">
+                        <button onClick={logout} className="text-sky-200/60 hover:text-red-400 transition flex items-center gap-2 text-sm font-medium bg-red-500/10 px-3 py-1.5 rounded-lg border border-red-500/15">
                             <LogOut className="w-4 h-4" /> Sign Out
                         </button>
                     </div>

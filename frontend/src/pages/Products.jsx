@@ -41,7 +41,7 @@ const Products = () => {
                         ))}
                     </div>
                 ) : products.length === 0 ? (
-                    <div className="text-center py-20 text-gray-400">
+                    <div className="text-center py-20 text-sky-200/50">
                         <ShoppingCart className="w-16 h-16 mx-auto mb-4 opacity-50" />
                         <p className="text-xl">No products available yet.</p>
                     </div>
@@ -49,7 +49,7 @@ const Products = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {products.map((product) => (
                             <div key={product._id} className="glass-panel overflow-hidden group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
-                                <div className="h-48 overflow-hidden bg-white/5 relative">
+                                <div className="h-48 overflow-hidden bg-sky-900/10 relative">
                                     <img
                                         src={product.image || 'https://via.placeholder.com/300'}
                                         alt={product.title}
@@ -60,13 +60,13 @@ const Products = () => {
                                 <div className="p-5 flex-1 flex flex-col justify-between">
                                     <div>
                                         <h3 className="text-lg font-bold text-white mb-1 truncate">{product.title}</h3>
-                                        <p className="text-sm text-gray-400 line-clamp-2 mb-4">{product.description}</p>
+                                        <p className="text-sm text-sky-200/50 line-clamp-2 mb-4">{product.description}</p>
                                     </div>
                                     <div className="flex items-center justify-between mt-auto">
                                         <span className="text-xl font-bold text-primary">${product.price.toFixed(2)}</span>
                                         <button
                                             onClick={() => addToCart(product._id)}
-                                            className="bg-white/10 hover:bg-primary text-white p-2 rounded-lg transition-colors duration-300"
+                                            className="bg-sky-400/10 hover:bg-primary text-white p-2 rounded-lg transition-colors duration-300 border border-sky-300/15"
                                         >
                                             <ShoppingCart className="w-5 h-5" />
                                         </button>
